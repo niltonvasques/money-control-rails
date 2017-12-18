@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Table, Button } from 'react-bootstrap'
-import UserRow from './UserRow'
+import GridRow from './GridRow'
 class Grid extends React.Component {
   render () {
     return (
@@ -21,7 +21,8 @@ class Grid extends React.Component {
           <tbody>
             {this.props.data.map((item, index) => {
                 return (
-                  <UserRow key={index} csrf_token={this.props.csrf_token} {...item} />
+                  <GridRow key={index} csrf_token={this.props.csrf_token}
+                           columns={this.props.columns} {...item} />
                 )
               })
             }
