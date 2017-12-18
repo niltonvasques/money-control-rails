@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Table, Button } from 'react-bootstrap'
 import GridRow from './GridRow'
+
 class Grid extends React.Component {
   render () {
     return (
@@ -12,7 +13,7 @@ class Grid extends React.Component {
             <tr>
               {this.props.columns.map((col, index) => {
                 return (
-                  <th key={index}>{col.name}</th>
+                  <th key={index}>{col.title ? col.title : col.name}</th>
                 )})
               }
               <th></th>
@@ -21,7 +22,7 @@ class Grid extends React.Component {
           <tbody>
             {this.props.data.map((item, index) => {
                 return (
-                  <GridRow key={index} csrf_token={this.props.csrf_token}
+                  <GridRow key={index} csrf_token={this.props.csrf_token} route={this.props.route}
                            columns={this.props.columns} {...item} />
                 )
               })

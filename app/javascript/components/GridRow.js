@@ -12,7 +12,8 @@ class GridRow extends React.Component {
           )})
         }
         <td>
-          <RowActions id={this.props.id} route='users' csrf_token={this.props.csrf_token} />
+          <RowActions id={this.props.id} route={this.props.route}
+                      csrf_token={this.props.csrf_token} />
         </td>
       </tr>
     );
@@ -21,6 +22,7 @@ class GridRow extends React.Component {
 
 GridRow.propTypes = {
   columns: PropTypes.array,
-  csrf_token: PropTypes.string
+  csrf_token: PropTypes.string,
+  route: PropTypes.string
 };
 export default GridRow
