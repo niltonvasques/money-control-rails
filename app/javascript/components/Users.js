@@ -1,29 +1,20 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Table } from 'react-bootstrap'
-import UserRow from './UserRow'
+import Grid from './Grid'
 class Users extends React.Component {
+  columns () {
+    return [
+      { name: '#' },
+      { name: 'name' },
+      { name: 'username' },
+      { name: 'email' }
+    ]
+  }
   render () {
     return (
-      <Table striped bordered condensed hover>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-      {this.props.users.map((user, index) => {
-          return (
-            <UserRow key={index} csrf_token={this.props.csrf_token} {...user} />
-          )
-        })
-      }
-        </tbody>
-    </Table>
+      <Grid data={this.props.users} csrf_token={this.props.csrf_token}
+        columns={this.columns()}/>
     );
   }
 }
