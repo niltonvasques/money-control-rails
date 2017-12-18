@@ -13,8 +13,10 @@ class Users extends React.Component {
   }
   render () {
     return (
-      <Grid data={this.props.users} csrf_token={this.props.csrf_token}
-        columns={this.columns()}/>
+      <div>
+        <Grid route='users' data={this.props.users} csrf_token={this.props.csrf_token}
+          columns={this.columns()}/>
+      </div>
     );
   }
 }
