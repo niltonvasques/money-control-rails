@@ -3,13 +3,17 @@
   <head>
     <title>Finances</title>
     <%= csrf_meta_tags %>
+    <meta name="turbolinks-cache-control" content="no-cache">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css', media: 'all', 'data-turbolinks-track' => true %>
+
   </head>
 
   <body>
     <%= javascript_pack_tag 'application' %>
+    <%= react_component 'Menu' %>
     <%= yield %>
   </body>
 </html>

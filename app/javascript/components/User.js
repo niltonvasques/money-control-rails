@@ -1,5 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
+import { Button } from 'react-bootstrap';
+
 class User extends React.Component {
   render () {
     return (
@@ -7,6 +9,7 @@ class User extends React.Component {
         <div>Name: {this.props.name}</div>
         <div>Username: {this.props.username}</div>
         <div>Email: {this.props.email}</div>
+        <Button>Primary</Button>
       </div>
     );
   }
