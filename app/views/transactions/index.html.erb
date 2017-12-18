@@ -1,0 +1,6 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Transactions</h1>
+
+<%= react_component 'Transactions', { transactions: @transactions,
+                                      csrf_token: form_authenticity_token } %>
