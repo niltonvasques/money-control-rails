@@ -7,7 +7,7 @@ import UserModel from "../models/User"
 class User extends React.Component {
   render () {
     return (
-      <Form columns={UserModel.columns()} data={this.props} />
+      <Form columns={UserModel.columns()} data={this.props} disabled={false} />
     );
   }
 }

@@ -5,7 +5,11 @@ import { Button, FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-b
 class FormRow extends React.Component {
   constructor (props) {
     super(props)
-    this.state = { value: this.props.data[this.props.col.name], col: this.props.col }
+    this.state = {
+      value: this.props.data[this.props.col.name],
+      col: this.props.col,
+      disabled: this.props.disabled,
+    }
   }
 
   getValidationState() {
@@ -30,6 +34,7 @@ class FormRow extends React.Component {
         validationState={this.getValidationState()}>
         <ControlLabel>{this.title()}</ControlLabel>
         <FormControl
+          disabled={this.state.disabled}
           type="text"
           value={this.state.value}
           placeholder="Enter text"
@@ -43,6 +48,7 @@ class FormRow extends React.Component {
 }
 
 FormRow.propTypes = {
+  disabled: PropTypes.bool,
   //col: PropTypes.string,
   //data: PropTypes.string
 };

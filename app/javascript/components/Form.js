@@ -5,7 +5,8 @@ import FormRow from './FormRow';
 class Form extends React.Component {
   constructor (props) {
     super(props)
-    this.state = { value: '' }
+    var disabled = this.props.disabled === undefined ? false : this.props.disabled
+    this.state = { data: this.props.data, disabled: disabled }
   }
 
   render () {
@@ -13,14 +14,13 @@ class Form extends React.Component {
       <div>
       {this.props.columns.map((col, index) => {
         return (
-          <FormRow key={index} col={col} data={this.props.data} />
+          <FormRow key={index} col={col} data={this.state.data} disabled={this.state.disabled} />
         )})
       }
       </div>
     );
   }
 }
-//<div key={index}>{col.title ? col.title : col.name}: {this.props.data[col.name]}</div>
 
 Form.propTypes = {
   //route: PropTypes.string,
