@@ -1,16 +1,13 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Button } from 'react-bootstrap';
+import Form from "./Form"
+import UserModel from "../models/User"
 
 class User extends React.Component {
   render () {
     return (
-      <div>
-        <div>Name: {this.props.name}</div>
-        <div>Username: {this.props.username}</div>
-        <div>Email: {this.props.email}</div>
-        <Button>Primary</Button>
-      </div>
+      <Form columns={UserModel.columns()} data={this.props} />
     );
   }
 }

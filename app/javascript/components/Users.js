@@ -2,20 +2,13 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Table } from 'react-bootstrap'
 import Grid from './Grid'
+import UserModel from "../models/User"
 
 class Users extends React.Component {
-  columns () {
-    return [
-      { name: 'id', title: "#" },
-      { name: 'name' },
-      { name: 'username' },
-      { name: 'email' }
-    ]
-  }
   render () {
     return (
         <Grid route='users' data={this.props.users} csrf_token={this.props.csrf_token}
-          columns={this.columns()}/>
+          columns={UserModel.columns()}/>
     );
   }
 }
