@@ -1,24 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @transaction.description %>
-</p>
-
-<p>
-  <strong>Value:</strong>
-  <%= @transaction.value %>
-</p>
-
-<p>
-  <strong>Account:</strong>
-  <%= @transaction.account %>
-</p>
-
-<p>
-  <strong>Tags:</strong>
-  <%= @transaction.tags %>
-</p>
+<%= react_component 'Transaction', transaction: @transaction, editable: false %>
 
 <%= link_to 'Edit', edit_transaction_path(@transaction) %> |
 <%= link_to 'Back', transactions_path %>

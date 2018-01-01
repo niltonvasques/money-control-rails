@@ -7,12 +7,17 @@ import AccountModel from "../models/Account"
 class Account extends React.Component {
   render () {
     return (
-      <Form columns={AccountModel.columns()} data={this.props} />
+      <Form columns={AccountModel.columns()} data={this.props.account}
+            disabled={!this.props.editable} />
     );
   }
 }
-Account.propTypes = {}
+var shape = {}
 AccountModel.columns().forEach(col => {
-  Account.propTypes[col.name] = PropTypes[col.type]
+  shape[col.name] = PropTypes[col.type]
 })
+Account.propTypes = {
+  account: PropTypes.shape(shape),
+  editable: PropTypes.bool
+}
 export default Account
