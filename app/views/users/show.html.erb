@@ -1,4 +1,4 @@
-<%= react_component 'User', @user %>
+<%= react_component 'User', user: @user, editable: false %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

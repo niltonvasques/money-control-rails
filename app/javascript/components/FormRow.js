@@ -13,10 +13,8 @@ class FormRow extends React.Component {
   }
 
   getValidationState() {
-    const length = this.state.value.length
-    if (length > 10) return 'success'
-    else if (length > 5) return 'warning'
-    else if (length > 0) return 'error'
+    if (this.state.disabled) return null
+    if (this.state.col.validation) return this.state.col.validation(this.state.value)
     return null
   }
 
@@ -28,7 +26,7 @@ class FormRow extends React.Component {
     this.setState({ value: e.target.value })
   }
 
-  row () {
+  renderFormControl () {
     var type = this.state.col.type === "number" ? "number" : "text"
     return <FormControl
         disabled={this.state.disabled}
@@ -39,14 +37,19 @@ class FormRow extends React.Component {
       />
   }
 
+  renderHelpBlock () {
+    if (this.state.disabled) return null
+    return <HelpBlock>{this.state.col.help}</HelpBlock>
+  }
+
   render () {
     return (
       <FormGroup controlId="formBasicText"
         validationState={this.getValidationState()}>
         <ControlLabel>{this.title()}</ControlLabel>
-        {this.row()}
+        {this.renderFormControl()}
         <FormControl.Feedback />
-        <HelpBlock>Validation is based on string length.</HelpBlock>
+        {this.renderHelpBlock()}
       </FormGroup>
     )
   }
