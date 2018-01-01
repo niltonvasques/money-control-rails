@@ -1,7 +1,8 @@
 export default class User {
+  static route () { return '/users' }
   static columns () {
     return [
-      { name: 'id', title: "#", type: 'number' },
+      { name: 'id', title: "#", type: 'number', editable: false },
       { name: 'name', type: 'string', help: 'Name must have at least 10 characters',
         validation: (value) => {
           const length = value.length

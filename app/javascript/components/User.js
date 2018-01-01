@@ -7,7 +7,8 @@ import UserModel from "../models/User"
 class User extends React.Component {
   render () {
     return (
-      <Form columns={UserModel.columns()} data={this.props.user} disabled={!this.props.editable} />
+      <Form route={UserModel.route()} columns={UserModel.columns()} data={this.props.user}
+            disabled={!this.props.editable} csrf_token={this.props.csrf_token} />
     );
   }
 }
@@ -18,6 +19,7 @@ User.propTypes = {
     username: PropTypes.string,
     email: PropTypes.string
   }),
+  csrf_token: PropTypes.string,
   editable: PropTypes.bool
 };
 export default User
