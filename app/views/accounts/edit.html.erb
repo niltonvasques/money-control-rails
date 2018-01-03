@@ -1,6 +1,7 @@
 <h1>Editing Account</h1>
 
-<%= render 'form', account: @account %>
+<%= react_component 'Account', account: @account, editable: true,
+                               csrf_token: form_authenticity_token %>
 
 <%= link_to 'Show', @account %> |
 <%= link_to 'Back', accounts_path %>

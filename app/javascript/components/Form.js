@@ -32,7 +32,8 @@ class Form extends React.Component {
         <input type="hidden" name="authenticity_token" value={this.state.csrf_token} />
         {this.props.columns.map((col, index) => {
           return (
-            <FormRow key={index} col={col} data={this.state.data} disabled={this.state.disabled} />
+            <FormRow key={index} col={col} data={this.state.data} disabled={this.state.disabled}
+                     route={this.state.route} />
           )})
         }
         {this.renderSubmitButton()}

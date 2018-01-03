@@ -1,6 +1,7 @@
 <h1>Editing Transaction</h1>
 
-<%= render 'form', transaction: @transaction %>
+<%= react_component 'Transaction', transaction: @transaction, editable: true,
+                                   csrf_token: form_authenticity_token %>
 
 <%= link_to 'Show', @transaction %> |
 <%= link_to 'Back', transactions_path %>

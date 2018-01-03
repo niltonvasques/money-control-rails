@@ -7,8 +7,8 @@ import AccountModel from "../models/Account"
 class Account extends React.Component {
   render () {
     return (
-      <Form columns={AccountModel.columns()} data={this.props.account}
-            disabled={!this.props.editable} />
+      <Form route={AccountModel.route()} columns={AccountModel.columns()} data={this.props.account}
+            disabled={!this.props.editable} csrf_token={this.props.csrf_token} />
     );
   }
 }
@@ -18,6 +18,7 @@ AccountModel.columns().forEach(col => {
 })
 Account.propTypes = {
   account: PropTypes.shape(shape),
+  csrf_token: PropTypes.string,
   editable: PropTypes.bool
 }
 export default Account

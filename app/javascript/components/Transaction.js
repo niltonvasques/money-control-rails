@@ -7,8 +7,9 @@ import TransactionModel from "../models/Transaction"
 class Transaction extends React.Component {
   render () {
     return (
-      <Form columns={TransactionModel.columns()} data={this.props.transaction}
-            disabled={!this.props.editable} />
+      <Form route={TransactionModel.route()} columns={TransactionModel.columns()}
+            data={this.props.transaction} disabled={!this.props.editable}
+            csrf_token={this.props.csrf_token} />
     );
   }
 }
@@ -19,6 +20,7 @@ Transaction.propTypes = {
     username: PropTypes.string,
     email: PropTypes.string
   }),
+  csrf_token: PropTypes.string,
   editable: PropTypes.bool
 };
 export default Transaction

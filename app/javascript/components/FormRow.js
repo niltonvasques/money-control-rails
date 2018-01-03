@@ -1,15 +1,17 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap'
+import inflection from 'inflection'
 
 class FormRow extends React.Component {
   constructor (props) {
     super(props)
-    var disabled = this.props.disabled || (this.props.col.editable === false)
+    var disabled = props.disabled || (props.col.editable === false)
     this.state = {
-      value: this.props.data[this.props.col.name],
-      col: this.props.col,
+      value: props.data[props.col.name],
+      col: props.col,
       disabled: disabled,
+      route: props.route
     }
   }
 
@@ -24,7 +26,8 @@ class FormRow extends React.Component {
   }
 
   fieldName () {
-    return `user[${this.state.col.name}]`
+    var route = inflection.singularize(this.state.route).replace('/', '')
+    return `${route}[${this.state.col.name}]`
   }
 
   handleChange = (e) => {
