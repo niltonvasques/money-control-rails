@@ -21,16 +21,21 @@ class Form extends React.Component {
 
   route () {
     var route = this.state.route
-    if (this.state.data.id) route = `${route}/${this.state.data.id}`
+    if (!this.newRecord()) route = `${route}/${this.state.data.id}`
     return route
   }
+
+  newRecord () { return (this.state.data.id ? false : true) }
+
+  action () { return (this.newRecord() ? 'post' : 'put') }
 
   render () {
     return (
       <form action={this.route()} method='post'>
-        <input type='hidden' name='_method' value='put'/>
+        <input type='hidden' name='_method' value={this.action()} />
         <input type="hidden" name="authenticity_token" value={this.state.csrf_token} />
         {this.props.columns.map((col, index) => {
+          if (this.newRecord() && col.editable === false) return null
           return (
             <FormRow key={index} col={col} data={this.state.data} disabled={this.state.disabled}
                      route={this.state.route} />

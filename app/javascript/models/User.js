@@ -5,6 +5,7 @@ export default class User {
       { name: 'id', title: "#", type: 'number', editable: false },
       { name: 'name', type: 'string', help: 'Name must have at least 10 characters',
         validation: (value) => {
+          if (!value) return 'error'
           const length = value.length
           if (length > 10) return 'success'
           else if (length > 5) return 'warning'
